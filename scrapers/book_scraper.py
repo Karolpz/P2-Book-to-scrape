@@ -1,6 +1,3 @@
-import requests
-from bs4 import BeautifulSoup
-
 from scrapers.utils import get_soup
 
 def scrape_book_info(url):
@@ -30,8 +27,4 @@ def scrape_book_info(url):
     "Rating": rating
 }
 
-
-url = "https://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html"
-
-scrape_book_info(url)
 

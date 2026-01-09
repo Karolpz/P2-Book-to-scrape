@@ -9,7 +9,7 @@ def get_soup(url):
     else:
         raise Exception(f"Failed to retrieve page: {response.status_code}")
 
-def save_soup_to_file(data, file_path):
+def save_book_to_file(data, file_path):
     headers = ["Title", "Price", "Availability", "Description", "Rating"]
     with open(file_path, 'w',newline='', encoding='utf-8-sig') as file:
         writer = csv.DictWriter(file, fieldnames=headers)
