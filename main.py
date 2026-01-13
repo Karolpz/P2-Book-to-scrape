@@ -1,18 +1,21 @@
-from scrapers.utils import get_soup, save_book_to_file
+from scrapers.utils import save_book_to_file
 from scrapers.book_scraper import scrape_book_info
 from scrapers.category_scraper import scrape_book_from_category_info
+from scrapers.all_categories_scraper import scrape_all_categories
 
-def get_book_info():
-    url = "https://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html"
-    data_book = scrape_book_info(url)
-    save_book_to_file(data_book, "data/book_info.csv")
-
-def get_category_info():
-    url = "https://books.toscrape.com/catalogue/category/books/mystery_3/index.html"
-    data_category = scrape_book_from_category_info(url)
-    print(data_category)
+def main():
+    for category in scrape_all_categories():
+        category_name = category["name"]
+        category_url = category["url"]
+        
+        book_urls = scrape_book_from_category_info(category_url)
+        
+        for book_url in book_urls:
+            book_data = scrape_book_info(book_url)
+            save_book_to_file(book_data, category_name)
     
-
 if __name__ == "__main__":
-    get_book_info()
-    get_category_info()
+    main()
+
+# imbriquez le main
+# __main__
