@@ -1,27 +1,33 @@
 from scrapers.utils import get_soup
+from urllib.parse import urljoin
 
-def scrape_book_from_category_info(url):
-    all_titles = []
+BASE_URL = "https://books.toscrape.com/catalogue/"
 
-    while url:
-        soup = get_soup(url)
-
-        titles = soup.find_all("h3")
+def scrape_book_from_category_info(category_url)->list:
+    all_books = []
+    
+    while category_url:
+        soup = get_soup(category_url)
+        books = soup.find_all("div", class_="image_container")
         
-        for title in titles:
-            book_title =  title.find("a")["title"]
-            all_titles.append(book_title)
+        for book in books:
+            book_url =  book.find("a")["href"]
+            clean_url = book_url.replace("../", "")
+            all_url = urljoin(BASE_URL, clean_url)
+            all_books.append(all_url)
 
         next_button = soup.find("li", class_="next")
 
         if next_button:
             next_url = next_button.find("a")["href"]
-            build_next_url = url.rsplit('/', 1)[0] + '/' + next_url # On selectionne a partir de la droite (1) pour recuperer l'url de base la partie avant le / [0] et on ajoute le next_url
-            url = build_next_url
+            build_next_url = category_url.rsplit('/', 1)[0] + '/' + next_url # On selectionne a partir de la droite (1) pour recuperer l'url de base la partie avant le / [0] et on ajoute le next_url
+            category_url = build_next_url
         else:
-            url = None
-    
-    return all_titles
+            category_url = None
+
+    return all_books
+
+# use yield
 
 
 

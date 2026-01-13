@@ -10,9 +10,12 @@ def main():
         
         book_urls = scrape_book_from_category_info(category_url)
         
+        book_data_list = []
         for book_url in book_urls:
             book_data = scrape_book_info(book_url)
-            save_book_to_file(book_data, category_name)
+            book_data_list.append(book_data)
+        
+        save_book_to_file(book_data_list, category_name)
     
 if __name__ == "__main__":
     main()

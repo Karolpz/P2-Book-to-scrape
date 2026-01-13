@@ -1,7 +1,7 @@
 from scrapers.utils import get_soup
 
-def scrape_book_info(url):
-    soup = get_soup(url)
+def scrape_book_info(book_url):
+    soup = get_soup(book_url)
 
     book_title = soup.find("h1").text
     price = soup.find("p", class_="price_color").text
