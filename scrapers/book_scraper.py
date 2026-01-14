@@ -1,5 +1,5 @@
 from scrapers.utils import get_soup
-
+Base_URL = "https://books.toscrape.com/"
 def scrape_book_info(book_url):
     soup = get_soup(book_url)
 
@@ -18,13 +18,22 @@ def scrape_book_info(book_url):
         rating = rating_class[1]
     else:
         rating = "No rating available."
+
+    img_div = soup.find("div", class_="item active")
+    if img_div:
+        img_url_relative = img_div.find("img")["src"]
+        img_url = Base_URL + img_url_relative.replace("../", "")
+    else:
+        img_url = "No image available."
         
     return {
     "Title": book_title,
     "Price": price,
     "Availability": availability,
     "Description": description,
-    "Rating": rating
+    "Rating": rating,
+    "Image": img_url
 }
+
 
 
