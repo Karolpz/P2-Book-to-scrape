@@ -3,8 +3,7 @@ from urllib.parse import urljoin
 
 BASE_URL = "https://books.toscrape.com/catalogue/"
 
-def scrape_book_from_category_info(category_url)->list:
-    all_books = []
+def scrape_book_from_category_info(category_url):
     
     while category_url:
         soup = get_soup(category_url)
@@ -13,8 +12,8 @@ def scrape_book_from_category_info(category_url)->list:
         for book in books:
             book_url =  book.find("a")["href"]
             clean_url = book_url.replace("../", "")
-            all_url = urljoin(BASE_URL, clean_url)
-            all_books.append(all_url)
+            full_url = urljoin(BASE_URL, clean_url)
+            yield full_url
 
         next_button = soup.find("li", class_="next")
 
@@ -24,8 +23,6 @@ def scrape_book_from_category_info(category_url)->list:
             category_url = build_next_url
         else:
             category_url = None
-
-    return all_books
 
 # use yield
 
