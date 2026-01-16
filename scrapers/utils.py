@@ -10,10 +10,7 @@ session.headers['User-Agent'] = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Apple
 def get_soup(url):
     response = session.get(url)
     response.raise_for_status()
-    if response.status_code == 200:
-        return BeautifulSoup(response.content, 'html.parser')
-    else:
-        raise Exception(f"Failed to retrieve page: {response.status_code}")
+    return BeautifulSoup(response.content, 'html.parser')
 
 def save_book_to_file(data, category_name):
     headers = ["Title", "Price", "Availability", "Description", "Rating", "Image"]

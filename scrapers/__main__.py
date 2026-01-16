@@ -5,9 +5,7 @@ from scrapers.all_categories_scraper import scrape_all_categories
 from concurrent.futures import ThreadPoolExecutor
 
 def main():
-    for category in scrape_all_categories():
-        category_name = category["name"]
-        category_url = category["url"]
+    for category_name, category_url in scrape_all_categories():
         
         book_urls = scrape_book_from_category_info(category_url)
         
@@ -27,5 +25,3 @@ def main():
 if __name__ == "__main__":
     main()
 
-# imbriquez le main
-# __main__

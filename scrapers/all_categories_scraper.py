@@ -12,4 +12,4 @@ def scrape_all_categories():
         category_name = link.text.strip()
         category_url = link["href"]
         full_url = BASE_URL.rsplit('/', 1)[0] + '/' + category_url
-        yield {"name": category_name, "url": full_url}
+        yield category_name, full_url

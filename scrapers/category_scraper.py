@@ -24,7 +24,6 @@ def scrape_book_from_category_info(category_url):
         else:
             category_url = None
 
-# use yield
 
 
 

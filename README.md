@@ -41,27 +41,16 @@ git clone https://github.com/Karolpz/P2-Book-to-scrape
 cd P2-Book-to-scrape
 ```
 
-### 3. Configurer l'environnement
-```bash
-uv venv
-```
 # Activer l'environnement et installer les dépendances
 ```bash
-# macOS/Linux
-source .venv/bin/activate
-
-# Windows
-.venv\Scripts\activate
-
-# Installer les dépendances
-uv pip install -e .
+uv sync
 ```
 
 ## Utilisation
 
 Pour lancer le cycle complet d'extraction :
 ```bash
-uv run main.py
+uv run python -m scrapers
 ```
 
 Le script générera automatiquement les répertoires suivants :
