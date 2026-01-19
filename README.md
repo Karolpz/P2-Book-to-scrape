@@ -78,3 +78,6 @@ Pour chaque livre, les informations suivantes sont collectées :
 - BeautifulSoup4 (Parsing HTML)
 - Requests (Requêtes HTTP)
 - Concurrent.futures (Multi-threading)
+
+Un fichier requirements.txt est également fourni à des fins de compatibilité avec les
+environnements ou outils ne supportant pas encore pyproject.toml ou uv.
