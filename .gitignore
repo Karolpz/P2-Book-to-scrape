@@ -1,4 +1,11 @@
+# Données générées
 *.csv
+data/
 images/
+
+# Environnement virtuel
 .venv/
-data
+
+# Python cache
+__pycache__/
+*.pyc
