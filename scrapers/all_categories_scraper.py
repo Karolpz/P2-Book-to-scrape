@@ -1,4 +1,5 @@
 from scrapers.utils import get_soup
+from urllib.parse import urljoin
 
 BASE_URL = "https://books.toscrape.com/index.html"
 
@@ -11,5 +12,5 @@ def scrape_all_categories():
     for link in category_links:
         category_name = link.text.strip()
         category_url = link["href"]
-        full_url = BASE_URL.rsplit('/', 1)[0] + '/' + category_url
+        full_url = urljoin(BASE_URL, category_url)
         yield category_name, full_url
