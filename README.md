@@ -65,10 +65,7 @@ Pour chaque livre, les informations suivantes sont collectées :
 - Prix
 - Disponibilité
 - Note (Rating)
-- Catégorie
 - Description
-- UPC (Universal Product Code)
-- URL de la page
 - URL de l'image
 
 ## Technologies utilisées
