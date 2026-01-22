@@ -23,9 +23,9 @@ Le projet suit une logique de pipeline de données :
 - Python 3.8 ou supérieur
 - uv (gestionnaire de paquets et d'environnements)
 
-## Installation
+# Installation
 
-### 1. Installer uv
+## Installer uv
 Si vous ne l'avez pas encore, installez uv :
 ```bash
 # macOS/Linux
@@ -35,13 +35,13 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
 ```
 
-### 2. Cloner le projet
+## Cloner le projet
 ```bash
 git clone https://github.com/Karolpz/P2-Book-to-scrape
 cd P2-Book-to-scrape
 ```
 
-# Activer l'environnement et installer les dépendances
+## Activer l'environnement et installer les dépendances
 ```bash
 uv sync
 ```
@@ -52,6 +52,30 @@ Pour lancer le cycle complet d'extraction :
 ```bash
 uv run python -m scrapers
 ```
+
+# Installation alternative (sans UV)
+
+## Créer et activer un environnement virtuel
+```bash
+# macOS / Linux
+python -m venv venv
+source venv/bin/activate
+
+# Windows
+python -m venv venv
+venv\Scripts\activate
+```
+
+## Installer les dépendances
+```bash
+pip install -r requirements.txt
+```
+
+## Lancer le script
+```bash
+python -m scrapers
+```
+
 
 Le script générera automatiquement les répertoires suivants :
 - /data : Contient les fichiers CSV (un par catégorie).

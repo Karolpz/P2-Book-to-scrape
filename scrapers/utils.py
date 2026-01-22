@@ -13,7 +13,7 @@ def get_soup(url):
     return BeautifulSoup(response.content, 'html.parser')
 
 def save_book_to_file(data, category_name):
-    headers = ["Title", "Price", "Availability", "Description", "Rating", "Image"]
+    headers = ["Product Page URL", "UPC", "Title", "Price (incl. tax)", "Price (excl. tax)", "Availability", "Description", "Rating", "Image", "Category"]
     os.makedirs("data", exist_ok=True)
     file_path = f"data/{category_name}.csv"
 
